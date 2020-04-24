@@ -1,3 +1,5 @@
+'use strict';
+
 let inputHexText = document.getElementById("hex_input_text"),
     hexInputButton = document.getElementById("hex_input_button"),
     resetButton = document.getElementById("reset_color"),
@@ -12,12 +14,14 @@ function validateHex() {
     } else if (/[^a-fA-F0-9/]/.test(inputHexText.value)) {
         alert('Only letters A - F are permitted');
         return false;
+    } else {
+        return true;
     }
 };
 
 hexInputButton.addEventListener("click", function () {
     let valResult = validateHex();
-    if (valResult = true) {
+    if (valResult === true) {
         let getHex = inputHexText.value.toUpperCase();
         displayHexText.innerHTML += `You have selected ${getHex}. <br>`;
         document.body.style.backgroundColor = `#${getHex}`;
@@ -27,4 +31,5 @@ hexInputButton.addEventListener("click", function () {
 resetButton.addEventListener("click", function () {
     let resetHex = '#FFFFFF'
     document.body.style.backgroundColor = resetHex;
+    inputHexText.value = "";
 });
