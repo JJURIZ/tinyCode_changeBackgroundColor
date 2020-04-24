@@ -1,29 +1,37 @@
 let inputHexText = document.getElementById("hex_input_text"),
     hexInputButton = document.getElementById("hex_input_button"),
     resetButton = document.getElementById("reset_color"),
-    displayHexText = document.getElementById("hex_text"),
-    colorState = 0;
+    displayHexText = document.getElementById("hex_text");
 
-let checkInput = function checkInput(alphanum){
-    let hexCheck = /^[0-9a-fA-F]/;
-    if(inputHexText.value.match(hexCheck)){
-        return true;
-    } else {
-        alert("Please enter a valid Hex code.");
+function validateHex() {
+    var validChar = inputHexText.value;
+
+    if (validChar.length > 6) {
+        alert("Value cannot exceed 6 characters.");
+        return false;
+    } else if (/[^a-fA-F0-9/]/.test(inputHexText.value)) {
+        alert('Only letters A - F are permitted');
         return false;
     }
-}
+};
 
 hexInputButton.addEventListener("click", function () {
+    validateHex();
+    if (validateHex = true){
     let getHex = inputHexText.value.toUpperCase();
     displayHexText.innerHTML += `You have selected ${getHex}. <br>`;
     document.body.style.backgroundColor = `#${getHex}`;
-    checkInput();
-    
+    };
+
+resetButton.addEventListener("click", function(){
+    let resetHex = '#FFFFFF'
+    document.body.style.backgroundColor = resetHex;
+})
+
     //when user clicks the button do the following:
     //Get the value from the input box -DONE
     //confirm the value is a valid hex code -NOT DONE
-    // 0-9, A-F
+    // 0-9, A-F - DONE
     //change background color-DONE
     //log background colors-DONE
     //Also, need to reduce size of image.-DONE
