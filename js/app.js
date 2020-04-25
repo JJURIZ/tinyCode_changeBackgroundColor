@@ -5,12 +5,10 @@ let inputHexText = document.getElementById("hex_input_text"),
     resetButton = document.getElementById("reset_color"),
     displayHexText = document.getElementById("hex_text");
 
-    // Validates character limit of Hex codes ( 0 - 9, a - f).
+    // Validates character input limitations of Hex codes ( 0 - 9, a - f).
 function validateHex() {
-    var validChar = inputHexText.value;
-
-    if (/[^a-fA-F0-9/]/.test(validChar.value)) {
-        alert('Only letters A - F are permitted');
+    if (/[^a-fA-F0-9/]/.test(inputHexText.value)) {
+        alert('Only the letters A - F are permitted');
         return false;
     } else {
         return true;
