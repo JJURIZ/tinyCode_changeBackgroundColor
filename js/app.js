@@ -5,13 +5,11 @@ let inputHexText = document.getElementById("hex_input_text"),
     resetButton = document.getElementById("reset_color"),
     displayHexText = document.getElementById("hex_text");
 
+    // Validates character limit of Hex codes ( 0 - 9, a - f).
 function validateHex() {
     var validChar = inputHexText.value;
 
-    if (validChar.length > 6) {
-        alert("Hex code cannot exceed 6 characters.");
-        return false;
-    } else if (/[^a-fA-F0-9/]/.test(inputHexText.value)) {
+    if (/[^a-fA-F0-9/]/.test(validChar.value)) {
         alert('Only letters A - F are permitted');
         return false;
     } else {
@@ -19,6 +17,7 @@ function validateHex() {
     }
 };
 
+    // When Change Color button clicked, takes the user's value, changes background color, and records the user's choice on screen. 
 hexInputButton.addEventListener("click", function () {
     let valResult = validateHex();
     if (valResult === true) {
@@ -28,6 +27,7 @@ hexInputButton.addEventListener("click", function () {
     }
 });
 
+    // When Reset Color button clicked, resets the background color to white. 
 resetButton.addEventListener("click", function () {
     let resetHex = '#FFFFFF'
     document.body.style.backgroundColor = resetHex;
